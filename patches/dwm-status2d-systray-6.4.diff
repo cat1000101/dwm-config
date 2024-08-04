@@ -99,8 +99,8 @@ index e5efb6a..79a46f5 100644
  static void setclientstate(Client *c, long state);
  static void setfocus(Client *c);
 @@ -207,6 +233,7 @@ static void seturgent(Client *c, int urg);
+ static void seturgent(Client *c, int urg);
  static void showhide(Client *c);
- static void sigchld(int unused);
  static void spawn(const Arg *arg);
 +static Monitor *systraytomon(Monitor *m);
  static void tag(const Arg *arg);
