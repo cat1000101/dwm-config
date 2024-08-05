@@ -1537,6 +1537,32 @@ setmfact(const Arg *arg)
 }
 
 void
+execute_commands(const char *commands[][10]) {
+    for (int i = 0; commands[i][0] != NULL; ++i) {
+        pid_t pid = fork();
+
+        if (pid == -1) {
+            // Error occurred
+            perror("fork");
+            exit(EXIT_FAILURE);
+        } else if (pid == 0) {
+            // Child process
+            printf("Child process, executing command: %s\n", commands[i][0]);
+            execvp(commands[i][0], (char *const *)commands[i]);
+
+            // If execvp returns, it must have failed
+            perror("execvp");
+            exit(EXIT_FAILURE);
+        } else {
+            // Parent process
+            int status;
+            waitpid(pid, &status, 0);
+            printf("Command %s finished with status %d\n", commands[i][0], status);
+        }
+    }
+}
+
+void
 setup(void)
 {
 	int i;
@@ -1590,6 +1616,8 @@ setup(void)
 	/* init bars */
 	updatebars();
 	updatestatus();
+	/* init commands can be changed at config.h in initExecutionCommands */
+	execute_commands(initExecutionCommands);
 	/* supporting window for NetWMCheck */
 	wmcheckwin = XCreateSimpleWindow(dpy, root, 0, 0, 1, 1, 0, 0, 0);
 	XChangeProperty(dpy, wmcheckwin, netatom[NetWMCheck], XA_WINDOW, 32,
