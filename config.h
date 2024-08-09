@@ -56,7 +56,7 @@ static const Layout layouts[] = {
 
 /* start up commands */
 static const char *initExecutionCommands[][10] = {
-        {"feh", "--bg-fill", "/home/cat/Pictures/wp/cat-lamp.jpg", NULL},
+        {"feh", "--bg-fill", "/home/cat/.dwm/wallPaper/cuteWuv.jpg", NULL},
         {NULL}  // Sentinel value to mark the end of the command list
 };
 
@@ -104,6 +104,7 @@ static const Key keys[] = {
 	// TAGKEYS(                        XK_8,                      7)
 	// TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 };
 
 /* button definitions */
