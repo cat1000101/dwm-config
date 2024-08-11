@@ -53,3 +53,5 @@ dkms.conf
 
 dwm
 .vscode
+*.rej
+*.orig
