@@ -79,8 +79,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrot} },
 	{ MODKEY,                       XK_i,      spawn,          {.v = volumeUp} },
 	{ MODKEY,                       XK_d,      spawn,          {.v = volumeDown} },
-	{ MODKEY,                       XK_space,  spawn,          SHCMD("ibus engine xkb:us::eng") },
-	{ MODKEY|ShiftMask,             XK_space,  spawn,          SHCMD("ibus engine xkb:il::heb") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
